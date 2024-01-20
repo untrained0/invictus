@@ -62,6 +62,11 @@ const Header = () => {
                 >
                   Register
                 </div>
+                <div>
+                <NavLink to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`} className="dropdown-item">
+                          Dashboard
+                 </NavLink>
+                </div>
               </div>
 
               <div className="md:hidden flex flex-1 justify-end items-center">

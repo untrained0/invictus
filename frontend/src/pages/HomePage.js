@@ -1,5 +1,5 @@
 import React from "react";
-// import { useAuth } from "../context/auth";
+import { useAuth } from "../context/auth";
 import Layout from './../components/Layouts/Layout';
 import YtVideos from '../components/Layouts/YtVideos'
 import Footer from "../components/Layouts/Footer";
@@ -10,9 +10,10 @@ import HeroSection from "../components/HomePage/HeroSection";
 
 
 const HomePage = () => {
-  // const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
   return (
     <Layout>
+      <pre>{JSON.stringify(auth, null, 4)}</pre>
       <div>
       <HeroSection
         title="Welcome to Our Website"
