@@ -1,3 +1,5 @@
+import { navlinks } from "."
+
 const navLinks = [
     {
       id: 1,
@@ -25,3 +27,5 @@ const navLinks = [
       url: "/contact-us",
     },
 ]
+
+export default navlinks;
