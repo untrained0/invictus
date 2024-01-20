@@ -61,28 +61,28 @@ const Header = () => {
               </div>
 
               <div className="md:hidden flex flex-1 justify-end items-center">
-              <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth="2"
-                  onClick={()=>{setToggle(!toggle)}}
+                  onClick={() => { setToggle(!toggle) }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-              
+
                 <div
                   className={`${toggle ? 'flex' : 'hidden'} bg-slate-500 p-6 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
                 >
                   <ul className="list-none flex flex-col justify-end items-center flex-1">
                     {
-                      navlinks.map((links , index) => (
+                      navlinks.map((links, index) => (
                         <li id={links.id}
-                        onClick={() => {
-                          navigate(links.url)
-                        }}
+                          onClick={() => {
+                            navigate(links.url)
+                          }}
                           className={`font-normal cursor-pointer text-[16px] ${index === (navlinks.length - 1) ? "mb-0" : "mb-1"}`
                           }
                           key={links.id}

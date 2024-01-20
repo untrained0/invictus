@@ -12,5 +12,9 @@ root.render(
     <App />
   </BrowserRouter>
   </AuthProvider>
+<<<<<<< HEAD
 ); 
 
+=======
+);
+>>>>>>> 76b5ce1656032e71afc6bb567109ef4468df77f1
