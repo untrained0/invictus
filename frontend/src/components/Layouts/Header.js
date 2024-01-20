@@ -1,11 +1,16 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import { GiShoppingBag } from "react-icons/gi";
+import React, { useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 
+import { navlinks } from "../../Constants";
+
 const Header = () => {
+
+  const navigate = useNavigate();
   const [auth, setAuth] = useAuth();
+  const [toggle, setToggle] = useState(false);
+
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -17,57 +22,82 @@ const Header = () => {
   }
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              MINI-PROJECT App
-            </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
-                  Home
-                </NavLink>
-              </li>
-              {
-              (!auth.user)? (<>
-                <li className="nav-item">
-                <NavLink to="/register" className="nav-link">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link">
+
+      <header className="bg-white">
+        <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-1 items-center justify-end md:justify-between">
+            <nav aria-label="Global" className="hidden md:block">
+              <ul className="flex items-center gap-6 text-sm">
+
+                {
+                  navlinks.map((links) => (
+                    <li id={links.id}
+                      onClick={() => {
+                        navigate(links.url)
+                      }}
+                      className="text-gray-500 transition hover:text-gray-500/75"
+                    >{links.title}</li>
+                  ))
+                }
+
+              </ul>
+            </nav>
+
+            <div className="flex items-center gap-4">
+              <div className="sm:flex sm:gap-4">
+                <a
+                  className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
+                  href="/"
+                >
                   Login
-                </NavLink>
-              </li>
-              </>) : (<>
-                <li className="nav-item">
-                <NavLink onClick={handleLogout} to="/login" className="nav-link">
-                  Logout
-                </NavLink>
-              </li>
-              </>)}
-              <li className="nav-item">
-                <NavLink to="/yt" className="nav-link">
-                  Profile
-                </NavLink>
-              </li>
-            </ul>
+                </a>
+
+                <a
+                  className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block"
+                  href="/"
+                >
+                  Register
+                </a>
+              </div>
+
+              <div className="md:hidden flex flex-1 justify-end items-center">
+              <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  onClick={()=>{setToggle(!toggle)}}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              
+                <div
+                  className={`${toggle ? 'flex' : 'hidden'} bg-slate-500 p-6 absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+                >
+                  <ul className="list-none flex flex-col justify-end items-center flex-1">
+                    {
+                      navlinks.map((links , index) => (
+                        <li id={links.id}
+                        onClick={() => {
+                          navigate(links.url)
+                        }}
+                          className={`font-normal cursor-pointer text-[16px] ${index === (navlinks.length - 1) ? "mb-0" : "mb-1"}`
+                          }
+                          key={links.id}
+                        >{links.title}</li>
+                      ))
+                    }
+                  </ul>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
-      </nav>
+      </header>
+
     </>
   );
 };

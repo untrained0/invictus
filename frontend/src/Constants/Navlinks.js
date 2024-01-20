@@ -25,3 +25,5 @@ const navlinks = [
         url: "/contact-us",
     },
 ]
+
+export default navlinks;
