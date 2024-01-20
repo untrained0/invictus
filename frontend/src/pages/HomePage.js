@@ -8,7 +8,7 @@ const HomePage = () => {
   // const [auth, setAuth] = useAuth();
   return (
     <Layout>
-      <h1>HomePage</h1>
+      <h1 >HomePage</h1>
       <YtVideos />
     </Layout>
   );

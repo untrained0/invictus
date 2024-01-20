@@ -31,28 +31,28 @@ export default function YtVideos() {
   }, []);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
       {isLoading ? (
         <p>Loading videos...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        <div>
+        <>
           {allVideos.map((item) => (
-            <div key={item.id.videoId}>
+            <div key={item.id.videoId} className="h-96 rounded-lg bg-gray-200 overflow-hidden">
+              <p className="text-center text-white bg-gray-800 p-2">{item.snippet.title}</p>
               <iframe
-                width="560"
-                height="315"
+                width="100%"
+                height="100%"
                 src={item?.VideoLink}
                 title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
-              <p>{item.snippet.title}</p>
             </div>
           ))}
-        </div>
+        </>
       )}
     </div>
   );
