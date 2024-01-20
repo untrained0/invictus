@@ -4,7 +4,7 @@ import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import HomePage from './pages/HomePage';
 // import YtVideos from './pages/YtVideos';
-import Dashboard from './pages/user/Dashboard';
+import Dashboard from './pages/user/Layout';
 import Private from './components/Routes/Private';
 import AdminRoute from './components/Routes/AdminRoute';
 import AdminDashboard from './pages/admin/AdminDashboard';

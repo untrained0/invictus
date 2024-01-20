@@ -21,7 +21,10 @@ const HomePage = () => {
         <TestimonialsSection className="py-16" />
         <div className="bg-gradient-to-b from-gray-100 to-transparent h-16" />
         <ContactSection className="py-16" />
- 
+        {/* <div
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-no-repeat"
+          style={{ backgroundImage: 'url("/student.jpeg")' }}
+        /> */}
       </div>
     </Layout>
   );
