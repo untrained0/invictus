@@ -1,5 +1,3 @@
-import { navlinks } from "."
-
 const navLinks = [
     {
       id: 1,
@@ -28,4 +26,4 @@ const navLinks = [
     },
 ]
 
-export default navlinks;
+export default navLinks;
